@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 	xmlns="http://www.springframework.org/schema/beans"
+				xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				xsi:schemaLocation="http://www.springframework.org/schema/beans">
+				
+				<bean id="bookService" class="com.example.demo.BookService">
+					<property name="bookRepository" ref="bookRepository"></property>
+				</bean>
+
+				<bean id="bookRepository" class="com.example.demo.BookRepository" />
+				
+</beans>
