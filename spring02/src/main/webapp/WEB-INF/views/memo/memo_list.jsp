@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <%@ include file="../include/header.jsp" %>
-<script>
+<script type="text/javascript">
 function memo_view(idx) {
 	location.href = "${path}/memo/view/" + idx;
 }

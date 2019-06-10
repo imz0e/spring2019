@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 <%@ include file="../include/header.jsp" %>
 <script>
-$(function() {
+$(document).ready(function() {
 	// 수정
 	$("#btnUpdate").click(function() {
 		document.form1.action="${path}/memo/update/${dto.idx}";
