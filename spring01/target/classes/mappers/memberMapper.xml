@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="member">
+	<select id="memberList" resultType="memberDTO">
+		SELECT * 
+		FROM MEMBER
+		ORDER BY name
+	</select>
+	
+	<select id="viewMember" parameterType="String" resultType="memberDTO">
+		SELECT *
+		FROM MEMBER
+		WHERE userid = #{userid}
+	</select>
+	
+	<insert id="insertMember">
+		INSERT INTO MEMBER (
+			userid
+			, passwd
+			, name
+			, email
+		) VALUES (
+			#{userid}
+			, #{passwd}
+			, #{name}
+			, #{email}
+			)
+	</insert>
+	
+	<update id="updateMember">
+		UPDATE MEMBER
+		SET passwd = #{passwd}
+			, name = #{name}
+			, email = #{email}
+		WHERE userid = #{userid}
+	</update>
+	
+	<delete id="deleteMember" parameterType="String">
+		DELETE MEMBER
+		WHERE userid = #{userid}
+	</delete>
+	
+	<select id="checkPw" resultType="int">
+		SELECT COUNT(*)
+		FROM MEMBER
+		WHERE userid = #{userid}
+			AND passwd = #{passwd}
+	</select>
+	
+</mapper>
