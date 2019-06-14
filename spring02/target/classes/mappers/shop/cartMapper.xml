@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
+<mapper namespace="cart">
+	
+	<insert id="insert">
+		INSERT INTO CART (
+			CART_ID, USERID, PRODUCT_ID, AMOUNT
+		) VALUES (
+			SEQ_CART.NEXTVAL
+			, #{userid}
+			, #{product_id}
+			, #{amount}
+			)
+	</insert>
+	
+	<select id="listCart" resultType="com.example.spring02.model.shop.dto.CartDTO">
+		SELECT CART_ID, P.PRODUCT_ID, C.USERID, NAME, PRODUCT_NAME, AMOUNT, PRICE, (PRICE * AMOUNT) MONEY
+		FROM MEMBER M, CART C, PRODUCT P
+		WHERE M.USERID = C.USERID
+			AND C.PRODUCT_ID = P.PRODUCT_ID
+			AND C.USERID = #{userid}
+		ORDER BY CART_ID
+	</select>
+	
+	<select id="sumMoney" resultType="int">
+		SELECT NVL(SUM(PRICE * AMOUNT), 0)
+		FROM CART C, PRODUCT P
+		WHERE C.PRODUCT_ID = P.PRODUCT_ID
+			AND USERID = #{userid}
+	</select>
+	
+	<delete id="delete">
+		DELETE CART
+		WHERE CART_ID = #{cart_id}
+	</delete>
+	
+	<delete id="deleteAll">
+		DELETE CART
+		WHERE USERID = #{userid}
+	</delete>
+	
+	<update id="modify">
+		UPDATE CART 
+		SET AMOUNT = #{amount}
+		WHERE CART_ID = #{cart_id}
+	</update>
+	
+</mapper>
+
