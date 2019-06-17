@@ -33,7 +33,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SET PRODUCT_NAME = #{product_name}
 			, PRICE = #{price}
 			, DESCRIPTION = #{description}
-			, PICTURE_URL = #{picture_rrl}
+			, PICTURE_URL = #{picture_url}
 		WHERE PRODUCT_ID = #{product_id}
 	</update>
 	
@@ -48,6 +48,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		DELETE PRODUCT
 		WHERE PRODUCT_ID = #{product_id}
 	</delete>
+	
+	<insert id="insert">
+		INSERT INTO PRODUCT
+		VALUES (
+			SEQ_PRODUCT.NEXTVAL
+			, #{product_name}
+			, #{price}
+			, #{description}
+			, #{picture_url}
+		)
+	</insert>
 	
 </mapper>
 

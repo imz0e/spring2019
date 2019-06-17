@@ -18,7 +18,11 @@ $(function() {
 <%@ include file="../include/menu.jsp" %>
 
 <h2>상품목록</h2>
-<button type="button" id="btnAdd"> 상품등록</button>
+
+<c:if test="${sessionScope.admin_userid != null}">
+	<button type="button" id="btnAdd"> 상품등록</button>
+</c:if>
+
 <table border="1"  style="width:500px">
 	<tr>
 		<th>상품ID</th>
@@ -34,6 +38,10 @@ $(function() {
 				<a href="${path}/shop/product/detail/${row.product_id}">
 				${row.product_name}
 				</a>
+				<c:if test="${sessionScope.admin_userid != null}">
+					<br>
+					<a href="${path}/shop/product/edit/${row.product_id}">[편집]</a>
+				</c:if>
 			</td>
 			<td><fmt:formatNumber value="${row.price}" pattern="#,###" /></td>
 		</tr>
