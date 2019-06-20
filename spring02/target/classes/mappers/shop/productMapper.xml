@@ -48,17 +48,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		DELETE PRODUCT
 		WHERE PRODUCT_ID = #{product_id}
 	</delete>
-	
-	<insert id="insert">
-		INSERT INTO PRODUCT
-		VALUES (
-			SEQ_PRODUCT.NEXTVAL
-			, #{product_name}
-			, #{price}
-			, #{description}
-			, #{picture_url}
-		)
-	</insert>
-	
+
 </mapper>
 
