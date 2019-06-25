@@ -49,5 +49,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE CART_ID = #{cart_id}
 	</update>
 	
+	<select id="cart_money" resultType="com.example.spring02.model.shop.dto.CartDTO">
+		SELECT PRODUCT_NAME, SUM(PRICE*AMOUNT) MONEY
+		FROM CART C, PRODUCT P
+		WHERE C.PRODUCT_ID = P.PRODUCT_ID
+		GROUP BY PRODUCT_NAME
+		ORDER BY PRODUCT_NAME
+	</select>
+	
 </mapper>
 
