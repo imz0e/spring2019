@@ -20,10 +20,10 @@ public class LogAdvice {
 	// Before(요청 전), After(요청 후), Around(실행 전후)
 	// 컨트롤러, 서비스, dao의 모든 method 실행 전후에 logPrint method가 호출됨
 	// excution ( 리턴자료형 class.method(매개변수) )
-	@Around(
-	"execution (* com.example.spring02.controller..*Controller.*(..))"
-	+ " or execution (* com.example.spring02.service..*Impl.*(..))"
-	+ " or execution (* com.example.spring02.model..dao.*Impl.*(..))")
+//	@Around(
+//	"execution (* com.example.spring02.controller..*Controller.*(..))"
+//	+ " or execution (* com.example.spring02.service..*Impl.*(..))"
+//	+ " or execution (* com.example.spring02.model..dao.*Impl.*(..))")
 	public Object logPrint(ProceedingJoinPoint joinPoint) throws Throwable {
 		long start = System.currentTimeMillis();
 		Object result = joinPoint.proceed();
